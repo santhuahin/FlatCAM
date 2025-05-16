@@ -15,11 +15,11 @@ INSTALL_PATH = /usr/share/flatcam-beta
 APPS_PATH = /usr/share/applications
 
 MIN_PY3_MINOR_VERSION := 5
-PY3_MINOR_VERSION := $(shell python3 --version | cut -d'.' -f2)
+PY3_MINOR_VERSION := $(shell python3 -c 'import sys; print(sys.version_info.minor)')
 
-ifneq ($(MIN_PY3_MINOR_VERSION), $(firstword $(sort $(PY3_MINOR_VERSION) $(MIN_PY3_MINOR_VERSION))))
+ifeq ($(shell [ $(PY3_MINOR_VERSION) -lt $(MIN_PY3_MINOR_VERSION) ] && echo yes),yes)
     $(info Current python version is 3.$(PY3_MINOR_VERSION))
-    $(error You must have at least 3.$(MIN_PY3_MINOR_VERSION) installed)
+    $(error You must have at least Python 3.$(MIN_PY3_MINOR_VERSION) installed)
 endif
 
 install:
