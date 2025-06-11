@@ -10,7 +10,7 @@ cycler>=0.10
 python-dateutil>=2.1
 kiwisolver>=1.1
 six
-setuptools
+setuptools>0, <66
 dill
 rtree
 pyopengl
