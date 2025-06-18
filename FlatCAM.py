@@ -2,7 +2,7 @@ import sys
 import os
 
 from PyQt5 import QtWidgets
-from PyQt5.QtCore import QSettings, Qt
+from PyQt5.QtCore import QSettings, Qt, QLocale
 from app_Main import App
 from appGUI import VisPyPatches
 
@@ -82,6 +82,7 @@ if __name__ == '__main__':
     else:
         QtWidgets.QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, False)
 
+    QLocale.setDefault(QLocale.c())
     app = QtWidgets.QApplication(sys.argv)
 
     # apply style
